@@ -1,4 +1,17 @@
 node_modules/
 dist/
 .env
+.env.*
 *.log
+
+# IDE
+.vscode/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# TypeScript build info
+*.tsbuildinfo
