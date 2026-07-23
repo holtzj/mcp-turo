@@ -4,7 +4,8 @@ export interface SearchCarsParams {
   end_date: string;
   min_price?: number;
   max_price?: number;
-  vehicle_type?: string;
+  vehicle_type?: string | string[];
+  vehicle_types?: string[];
   min_seats?: number;
 }
 

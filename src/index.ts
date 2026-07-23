@@ -44,10 +44,34 @@ const tools: Tool[] = [
           description: "Maximum daily price filter in USD (optional)",
         },
         vehicle_type: {
-          type: "string",
+          anyOf: [
+            {
+              type: "string",
+              enum: ["car", "suv", "truck", "van", "minivan", "convertible", "luxury", "electric"],
+            },
+            {
+              type: "array",
+              items: {
+                type: "string",
+                enum: ["car", "suv", "truck", "van", "minivan", "convertible", "luxury", "electric"],
+              },
+              minItems: 1,
+              uniqueItems: true,
+            },
+          ],
           description:
-            "Filter by vehicle type: 'car', 'suv', 'truck', 'van', 'minivan', 'convertible', 'luxury', 'electric' (optional)",
-          enum: ["car", "suv", "truck", "van", "minivan", "convertible", "luxury", "electric"],
+            "Filter by one or more vehicle types: 'car', 'suv', 'truck', 'van', 'minivan', 'convertible', 'luxury', 'electric' (optional)",
+        },
+        vehicle_types: {
+          type: "array",
+          items: {
+            type: "string",
+            enum: ["car", "suv", "truck", "van", "minivan", "convertible", "luxury", "electric"],
+          },
+          minItems: 1,
+          uniqueItems: true,
+          description:
+            "Filter by multiple vehicle types. Prefer this for multi-type searches; vehicle_type also accepts an array for backward compatibility.",
         },
         min_seats: {
           type: "number",
@@ -181,7 +205,8 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           end_date: string;
           min_price?: number;
           max_price?: number;
-          vehicle_type?: string;
+          vehicle_type?: string | string[];
+          vehicle_types?: string[];
           min_seats?: number;
         };
         const results = await searchCars(params);
