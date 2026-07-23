@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "turo": {
+      "command": "node",
+      "args": ["dist/index.js"],
+      "env": {
+        "TURO_DEBUG": "1",
+        "TURO_HEADLESS": "0",
+        "TURO_DEBUG_DIR": "/tmp/mcp-turo-debug",
+        "TURO_USER_DATA_DIR": "/tmp/mcp-turo-profile"
+      }
+    }
+  }
+}

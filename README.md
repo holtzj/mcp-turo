@@ -59,7 +59,7 @@ Or if installed globally via npm:
 {
   "mcpServers": {
     "turo": {
-      "command": "striderlabs-mcp-turo"
+      "command": "holtzj-mcp-turo"
     }
   }
 }
@@ -137,4 +137,4 @@ View or modify an existing booking.
 
 ## License
 
-MIT — Strider Labs <hello@striderlabs.ai>
+MIT — Accelerate Advisors <holtzj@accelerate-advisors.net>
